@@ -1,1 +1,0 @@
-./examples/ec/ec_simple_example -k 4 -p 2 >> isa_1_1mb.txt
