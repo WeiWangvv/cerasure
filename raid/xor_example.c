@@ -194,8 +194,8 @@ int encode_deforest_test(int k, int p, int w, int len, int packetsize,int e)
 	u8 *frag_ptrs[MMAX];
 	u8 *copy_ptrs[MMAX];
 	u8 *tmp[MMAX];
-	//unsigned int* encode_matrix;
-	unsigned int encode_matrix[40]={1,112,12,137,150,62,71,160,93,102,85,46,44,31,224,93,42,186,62,61,122,110,207,64,173,192,244,128,157,216,94,75,152,186,34,81,111,31,80,237};
+	unsigned int* encode_matrix;
+	
 	int* encode_bitmatrix;
 	int* slp;
 	int** schedule;
@@ -233,10 +233,8 @@ int encode_deforest_test(int k, int p, int w, int len, int packetsize,int e)
 		for (j = 0; j < alignlen; j++)
 			frag_ptrs[i][j] = rand();
 
-	//encode_matrix=cauchy_good_general_coding_matrix(k,p,w);
-	// encode_matrix=gen_best_matrix_all(k,p,w);
-	// encode_matrix=gen_best_matrix_from_any_element(k,p,w);
-	// encode_matrix=gen_best_matrix_from_any_element_lowtime(k,p,w);
+
+	encode_matrix=gen_best_matrix_from_any_element_lowtime(k,p,w);
 
 	// for(i=0;i<k*(p);i++)
 	// {
@@ -247,7 +245,7 @@ int encode_deforest_test(int k, int p, int w, int len, int packetsize,int e)
 
 
 	encode_bitmatrix=matrix_to_bitmatrix(k, p, w, encode_matrix);
-	printf("%d ",count_one_numbers(k,p,w,encode_bitmatrix));
+	// printf("%d ",count_one_numbers(k,p,w,encode_bitmatrix));
 
 	// int count=0;
 	// for(i=0;i<k*w*p*w;i++)
